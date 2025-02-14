@@ -1,5 +1,5 @@
 const initialState = {
-    value: 0
+    counter: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -7,18 +7,23 @@ const reducer = (state = initialState, action) => {
         case 'INC':
             return {
                 ...state,//разворачиваем старый стэйт
-                value: state.value + 1 // берем старый стейт его значение и добавлем 1 и записваем в value
+                counter: state.counter + 1 // берем старый стейт его значение и добавлем 1 и записваем в value
                 // на выходе получится объект со всеми старыми свойствами + новое валью
             };
         case 'DEC':
             return {
                 ...state,
-                value: state.value - 1
+                counter: state.counter - 1
+            };
+        case 'RST':
+            return {
+                ...state,
+                counter: 0
             };
         case 'RND':
             return {
                 ...state,
-                value: state.value * action.payload
+                counter: state.counter * action.payload
             }
         default:
             return state;
